@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package.Xml}${cfg.packagePath}.${table.MapperName}">
+    <resultMap id="${entity}Map" type="${package.Xml}${cfg.packagePath}.${entity}">
+        #foreach($filed in $table.fields)
+            #if(${filed.keyFlag})
+        <id column="${filed.name}" property="${filed.propertyName}"/>
+            #end
+        #end
+        #foreach($filed in $table.fields)
+            #if(!${filed.keyFlag})
+        <result column="${filed.name}" property="${filed.propertyName}"/>
+            #end
+        #end
+    </resultMap>
+</mapper>

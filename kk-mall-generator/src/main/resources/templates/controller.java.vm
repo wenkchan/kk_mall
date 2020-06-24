@@ -1,0 +1,13 @@
+package ${package.Controller}${cfg.packagePath};
+
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@AllArgsConstructor
+@RequestMapping("/${cfg.controllerPath}")
+public class ${table.controllerName} {
+
+
+}
