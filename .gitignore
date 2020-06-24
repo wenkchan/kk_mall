@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
 # Compiled class file
 *.class
 
@@ -21,3 +23,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+/.gitignore
+
+/kk-mall-manage-api/target/
+/kk-mall-api/target/
+/kk-mall-common/target/
+/kk-mall-generator/target/
+/kk-mall-test/target/

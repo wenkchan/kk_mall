@@ -1,7 +1,0 @@
-server:
-  port: 12092
-
-spring:
-  profiles:
-    active: dev
-
