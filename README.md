@@ -22,8 +22,7 @@ controller职责
 请求参数用对象承接，使用Validation来进行参数验证,已有的不满足可以进行注解自定义
 
 ### Service
-在数据处理逻辑简单的情况下，可以直接在service里面进行处理，但是如果比较复杂，必须得创建一个
-`@Repository`进行处理
+数据转换相关操作，必须要在`Representation`或`Vo`中操作,例如:数据库中查询到信息之后，从实体信息中转换到`Representation`
 
 ---
 
