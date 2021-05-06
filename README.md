@@ -1,14 +1,12 @@
 # 规范
 - 参考阿里Java手册 
-- 注意建模
-- 把处理逻辑内聚在`Vo值对象`或者`model实体`里面
+- 把数据处理逻辑内聚在`Vo值对象`或者`model实体`里面
 - 接口命名使用restful风格
 - 写请求尾缀`Command`
 - 读请求尾缀`Query`
 - 展示返回类尾缀`Representation`
 - 使用Swagger2作为接口文档
 - 依赖在父module中维护版本号，子module中不用写版本号,为了清楚知道所有的依赖，父module中也必须写上依赖的信息
-- 如果有复杂的sql,在mapper下创建对应模块的文件夹，在母xml里include
 
 ### Controller
 controller职责
@@ -19,7 +17,7 @@ controller职责
 4. swagger接口文档
 
 
-请求参数用对象承接，使用Validation来进行参数验证,已有的不满足可以进行注解自定义
+请求参数必须用对象承接，使用Validation来进行单个参数验证,已有的不满足可以进行注解自定义
 
 ### Service
 数据转换相关操作，必须要在`Representation`或`Vo`中操作,例如:数据库中查询到信息之后，从实体信息中转换到`Representation`
@@ -32,9 +30,11 @@ controller职责
 
 ### Log打印
 
+日志分级，如:阻碍主流程业务严重的警告，info日志可以按格式使用sls进行管理
+
 日志的打印使用了Spring自带的`LogBack`,格式定义都在`logback-spring.xml`下
 
-主要是打印控制台，写文件，输出sql等，线上不打debug日志,info跟error日志分开，并且使用`MDC`进行链路追踪。(更好的方案Zipkin)
+主要是打印控制台，写文件，输出sql等，线上不打debug日志,info跟error日志分开，并且使用`MDC`进行链路追踪。(更好的方案，分布式链路追踪)
 
 特别的,类`WebLog`是一个AOP类，请求IP、路径、方法、参数、返回结果和消耗时间进行打印，
 ```
