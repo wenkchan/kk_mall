@@ -35,7 +35,7 @@ public class CorsInterceptor implements HandlerInterceptor {
 
         String origin = request.getHeader("Origin");
 
-        if (env.getActiveProfiles()[0].equals("test")||env.getActiveProfiles()[0].equals("dev")) {
+        if ("test".equals(env.getActiveProfiles()[0])|| "dev".equals(env.getActiveProfiles()[0])) {
             response.setHeader("Access-Control-Allow-Origin", "*");
             response.setHeader("Cache-Control", "no-cache");
             response.setHeader("Access-Control-Allow-Credentials", "true");

@@ -14,11 +14,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CodeGenerator {
     //database config
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/kk_mall?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/ku_bricks?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&useUnicode=true";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "123456789";
 
@@ -27,8 +28,8 @@ public class CodeGenerator {
     private static final String BASE_PACKAGE = "com.kk.mall.api.biz";
 
 
-    private static final String[] TABLE_PREFIX = {"kk_", "sys_"};
-    private static final String[] TABLE = {"kk_client_basic_info"};
+    private static final String[] TABLE_PREFIX = {"t_", "sys_"};
+    private static final String[] TABLE = {"t_sys_dict"};
 
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -108,10 +109,13 @@ public class CodeGenerator {
     }
 
     private static InjectionConfig getInjectionConfig() {
+        Map<String, String> map = System.getenv();
+        String userName = map.get("USERNAME");
+
         List<FileOutConfig> fileOutList = new ArrayList<>();
 
         HashMap<String, Object> initMap = new HashMap<>();
-
+        initMap.put("author",userName);
 
         fileOutList.add(new FileOutConfig("templates/mapper.java.vm") {
             @Override
@@ -146,7 +150,6 @@ public class CodeGenerator {
         fileOutList.add(new FileOutConfig("templates/entity.java.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-
                 return SOURCE_PATH + BASE_PACKAGE_PATH + File.separator +
                         camelToFilePath(tableInfo.getEntityName()) + File.separator +
                         tableInfo.getEntityName() + ".java";
@@ -164,15 +167,6 @@ public class CodeGenerator {
             }
         });
 
-        fileOutList.add(new FileOutConfig("templates/repository.java.vm") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                initMap.put("repositoryName", tableInfo.getEntityName() + "Repository");
-                return SOURCE_PATH + BASE_PACKAGE_PATH + File.separator +
-                        camelToFilePath(tableInfo.getEntityName()) + File.separator +
-                        tableInfo.getEntityName() + "Repository.java";
-            }
-        });
 
 
         InjectionConfig injectionConfig = new InjectionConfig() {

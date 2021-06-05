@@ -7,7 +7,7 @@ import cn.hutool.json.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Created by zhaokaiqiang on 15/11/18.
+ *
  */
 @Slf4j
 public class JsonLogFormatter {

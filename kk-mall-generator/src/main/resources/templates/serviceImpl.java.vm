@@ -4,7 +4,9 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-
+/**
+ * @author  ${cfg.author}
+ */
 @Service
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements IService<${table.entityName}> {
 }

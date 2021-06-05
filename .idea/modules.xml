@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-api/kk-mall-api.iml" filepath="$PROJECT_DIR$/kk-mall-api/kk-mall-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-common/kk-mall-common.iml" filepath="$PROJECT_DIR$/kk-mall-common/kk-mall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-generator/kk-mall-generator.iml" filepath="$PROJECT_DIR$/kk-mall-generator/kk-mall-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-manage-api/kk-mall-manage-api.iml" filepath="$PROJECT_DIR$/kk-mall-manage-api/kk-mall-manage-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-parent.iml" filepath="$PROJECT_DIR$/kk-mall-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kk-mall-test/kk-mall-test.iml" filepath="$PROJECT_DIR$/kk-mall-test/kk-mall-test.iml" />
+    </modules>
+  </component>
+</project>

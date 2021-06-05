@@ -2,6 +2,7 @@ package com.kk.mall.common.result;
 
 import com.google.common.collect.ImmutableMap;
 import com.kk.mall.common.exception.CommonErrno;
+import com.kk.mall.common.exception.Errno;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -18,8 +19,9 @@ import java.util.Map;
 
 import static com.google.common.collect.ImmutableMap.of;
 
-@Slf4j
-@RestController
+/**
+ * @author chenwenkun
+ */
 public class ResultErrorController implements ErrorController {
 
     private static final String PATH = "/error";
@@ -41,13 +43,8 @@ public class ResultErrorController implements ErrorController {
 
 
         ApiResult<ImmutableMap<String, String>> apiResult =
-                ApiResult.error(CommonErrno.SYSTEM_ERROR, path, of("info", message),false);
-
-
-        if (status == CommonErrno.NOT_FOUND.getStatus()) {
-            apiResult.setStatus(CommonErrno.NOT_FOUND.getStatus());
-            apiResult.setMessage(CommonErrno.NOT_FOUND.getMessage());
-        }
+                ApiResult.error(
+                         CommonErrno.SYSTEM_ERROR, path, of("info", message));
 
 
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.valueOf(status));

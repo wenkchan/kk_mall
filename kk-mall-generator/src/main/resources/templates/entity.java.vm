@@ -1,20 +1,27 @@
 package ${package.Entity}${cfg.packagePath};
 
+
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
 import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * @author ${cfg.author}
+ */
+
 #if(${entityLombokModel})
-@Data
+@Getter
 #if(${superEntityClass})
 @EqualsAndHashCode(callSuper = true)
 #else
@@ -26,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
 @TableName("${table.name}")
 #end
 #if(${swagger2})
-@ApiModel(value="${entity}对象", description="$!{table.comment}")
+@ApiModel(value = "$!{table.comment}对象", description = "$!{table.comment}")
 #end
 #if(${superEntityClass})
 public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}>#end {

@@ -34,8 +34,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleBizException(BizException ex, HttpServletRequest request) {
         String path = request.getRequestURI();
         Map<String, Object> dataMap = Optional.ofNullable(ex.getData()).orElse(new HashMap<>());
-        ApiResult<Object> apiResult = ApiResult.error(ex.getError(), path, dataMap.size()>0?dataMap:null, false);
-        apiResult.setRequestId(MDC.get(Const.REQUEST_ID));
+        ApiResult<Object> apiResult = ApiResult.error(ex.getError(), path, dataMap.size() > 0 ? dataMap : null);
         log.error("[biz error]", ex);
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.OK);
     }
@@ -50,10 +49,9 @@ public class GlobalExceptionHandler {
                     String message = fieldError.getDefaultMessage();
                     return StringUtils.isEmpty(message) ? "no hint" : message;
                 }));
-        ApiResult<Object> apiResult = ApiResult.error(CommonErrno.REQUEST_PARAMS_VALIDATION_FAILED, path, error, false);
+        ApiResult<Object> apiResult = ApiResult.error(CommonErrno.REQUEST_PARAMS_VALIDATION_FAILED, path, error
+                , ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
 
-        apiResult.setMessage(ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
-        apiResult.setRequestId(MDC.get(Const.REQUEST_ID));
 
         log.error("[request param error] {}", error);
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.OK);
@@ -71,13 +69,11 @@ public class GlobalExceptionHandler {
 
         }, ConstraintViolation::getMessage));
 
-        ApiResult<Object> apiResult = ApiResult.error(CommonErrno.REQUEST_PARAMS_VALIDATION_FAILED, path, error, false);
-
         String showMessage = constraintViolations.iterator().next().getPropertyPath().toString();
         showMessage = showMessage.substring(showMessage.indexOf(".") + 1);
-        apiResult.setMessage(showMessage);
 
-        apiResult.setRequestId(MDC.get(Const.REQUEST_ID));
+        ApiResult<Object> apiResult = ApiResult.error(CommonErrno.REQUEST_PARAMS_VALIDATION_FAILED, path, error,showMessage);
+
         log.error("[request param error] {}", error);
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.OK);
     }
@@ -88,8 +84,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleGeneralException(Throwable ex, HttpServletRequest request) {
         String path = request.getRequestURI();
 
-        ApiResult<ImmutableMap<String, String>> apiResult = ApiResult.error(CommonErrno.SYSTEM_ERROR, path, of("detail", ex.toString()), false);
-        apiResult.setRequestId(MDC.get(Const.REQUEST_ID));
+        ApiResult<ImmutableMap<String, String>> apiResult = ApiResult.error(CommonErrno.SYSTEM_ERROR, path, of("detail", ex.toString()));
         log.error("[system error]", ex);
 
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.OK);

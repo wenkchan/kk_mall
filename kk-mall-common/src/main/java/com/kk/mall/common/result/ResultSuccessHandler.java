@@ -1,8 +1,6 @@
 package com.kk.mall.common.result;
 
-import com.kk.mall.common.Const;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -36,9 +34,7 @@ public class ResultSuccessHandler implements ResponseBodyAdvice {
             return null;
         }
         String path = serverHttpRequest.getURI().getPath();
-        ApiResult<Object> success = ApiResult.success(body,path);
-        success.setRequestId(MDC.get(Const.REQUEST_ID));
-        return success;
+        return ApiResult.success(body,path);
     }
 
 

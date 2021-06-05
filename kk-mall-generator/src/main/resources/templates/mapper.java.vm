@@ -3,7 +3,9 @@ package ${package.Mapper}${cfg.packagePath};
 import ${superMapperClassPackage};
 import org.apache.ibatis.annotations.Mapper;
 
-
+/**
+ * @author ${cfg.author}
+ */
 @Mapper
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 
