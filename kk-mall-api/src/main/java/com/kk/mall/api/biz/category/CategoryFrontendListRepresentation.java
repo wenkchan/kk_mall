@@ -1,6 +1,5 @@
 package com.kk.mall.api.biz.category;
 
-import com.kk.mall.api.biz.category.frontend.CategoryFrontend;
 import lombok.Getter;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public class CategoryFrontendListRepresentation {
     private String categoryName;
     private String categoryImgUrl;
 
-    public static List<CategoryFrontendListRepresentation> ofList(List<CategoryFrontend> categoryFrontends) {
+    public static List<CategoryFrontendListRepresentation> ofList(List<Category> categoryFrontends) {
        return categoryFrontends.stream().map(categoryFrontend -> {
                CategoryFrontendListRepresentation categoryFrontendListRepresentation=new CategoryFrontendListRepresentation();
                categoryFrontendListRepresentation.categoryName=categoryFrontend.getName();

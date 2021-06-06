@@ -1,7 +1,6 @@
 package com.kk.mall.api.biz.category;
 
 
-import com.kk.mall.api.biz.category.frontend.CategoryFrontendService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +19,11 @@ import java.util.List;
 public class CategoryController {
 
     @Resource
-    private CategoryFrontendService categoryFrontendService;
+    private CategoryService categoryService;
 
-    @ApiOperation("获取前端分类列表")
+    @ApiOperation("获取分类列表")
     @GetMapping("/frontend/list")
-    public List<CategoryFrontendListRepresentation> getFrontendCategoryList() {
-        return categoryFrontendService.getCategoryList();
+    public List<CategoryFrontendListRepresentation> getCategoryList() {
+        return categoryService.getCategoryList();
     }
 }

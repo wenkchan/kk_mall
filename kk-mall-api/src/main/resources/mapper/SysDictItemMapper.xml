@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.sys.dict.item.SysDictItemMapper">
+    <resultMap id="SysDictItemMap" type="com.kk.mall.api.biz.sys.dict.item.SysDictItem">
+        <id column="id" property="id"/>
+        <result column="sys_dict_id" property="sysDictId"/>
+        <result column="dict_key" property="dictKey"/>
+        <result column="dict_value" property="dictValue"/>
+        <result column="dict_desc" property="dictDesc"/>
+        <result column="sort" property="sort"/>
+        <result column="valid" property="valid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+</mapper>

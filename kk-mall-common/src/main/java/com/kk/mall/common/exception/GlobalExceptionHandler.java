@@ -84,7 +84,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleGeneralException(Throwable ex, HttpServletRequest request) {
         String path = request.getRequestURI();
 
-        ApiResult<ImmutableMap<String, String>> apiResult = ApiResult.error(CommonErrno.SYSTEM_ERROR, path, of("detail", ex.toString()));
+        ApiResult<ImmutableMap<String, String>> apiResult = ApiResult.error(CommonErrno.SYSTEM_ERROR, path, of("detail",
+                ex.toString()));
         log.error("[system error]", ex);
 
         return new ResponseEntity<>(apiResult, new HttpHeaders(), HttpStatus.OK);

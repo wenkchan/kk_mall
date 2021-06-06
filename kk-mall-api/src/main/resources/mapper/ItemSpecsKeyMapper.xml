@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.item.specs.key.ItemSpecsKeyMapper">
+    <resultMap id="ItemSpecsKeyMap" type="com.kk.mall.api.biz.item.specs.key.ItemSpecsKey">
+        <id column="id" property="id"/>
+        <result column="specs_type" property="specsType"/>
+        <result column="specs_key" property="specsKey"/>
+        <result column="specs_icon_url" property="specsIconUrl"/>
+        <result column="numeric" property="numeric"/>
+        <result column="numeric_search_segment" property="numericSearchSegment"/>
+        <result column="sort" property="sort"/>
+        <result column="valid" property="valid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+</mapper>

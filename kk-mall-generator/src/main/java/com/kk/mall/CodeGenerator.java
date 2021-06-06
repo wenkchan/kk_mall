@@ -29,7 +29,7 @@ public class CodeGenerator {
 
 
     private static final String[] TABLE_PREFIX = {"t_", "sys_"};
-    private static final String[] TABLE = {"t_sys_dict"};
+    private static final String[] TABLE = {"t_item_product_tag_relation"};
 
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.item.product.ItemProductMapper">
+    <resultMap id="ItemProductMap" type="com.kk.mall.api.biz.item.product.ItemProduct">
+        <id column="id" property="id"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_en_name" property="productEnName"/>
+        <result column="main_image_url" property="mainImageUrl"/>
+        <result column="series_id" property="seriesId"/>
+        <result column="description_image_urls" property="descriptionImageUrls"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="valid" property="valid"/>
+    </resultMap>
+</mapper>
