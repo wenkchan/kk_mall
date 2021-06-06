@@ -83,7 +83,6 @@ exception
 
 异常捕捉完成之后会统一封装成Spring提供的`ResponseEntity`并包装`ApiResult`进行返回,错误后都会去访问`/error`，即`DefaultRestErrorController`里面进行统一的返回，并额外对404的情况进行了处理
 
-拦截器异常注意自己处理
 
 ### 正常返回
 结果的处理在`common`下的`result`
