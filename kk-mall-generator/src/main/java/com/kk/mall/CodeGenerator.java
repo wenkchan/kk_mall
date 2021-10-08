@@ -29,7 +29,7 @@ public class CodeGenerator {
 
 
     private static final String[] TABLE_PREFIX = {"t_", "sys_"};
-    private static final String[] TABLE = {"t_item_product_tag_relation"};
+    private static final String[] TABLE = {"t_item_set_branch"};
 
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -110,7 +110,7 @@ public class CodeGenerator {
 
     private static InjectionConfig getInjectionConfig() {
         Map<String, String> map = System.getenv();
-        String userName = map.get("USERNAME");
+        String userName = map.get("USER");
 
         List<FileOutConfig> fileOutList = new ArrayList<>();
 

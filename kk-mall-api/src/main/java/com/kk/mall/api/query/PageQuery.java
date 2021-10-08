@@ -1,10 +1,10 @@
 package com.kk.mall.api.query;
 
-import lombok.Getter;
+import lombok.Data;
 
 
-@Getter
+@Data
 public class PageQuery {
-    private Integer pageNum = 1;
-    private Integer pageSize = 10;
+    private Integer page = 1;
+    private Integer size = 10;
 }

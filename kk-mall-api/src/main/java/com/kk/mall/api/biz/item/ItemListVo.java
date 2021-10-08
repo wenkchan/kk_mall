@@ -1,10 +1,12 @@
 package com.kk.mall.api.biz.item;
 
-import com.kk.mall.api.biz.item.branch.BranchMiniLogoVo;
-import com.kk.mall.api.biz.item.product.ItemProduct;
-import lombok.Getter;
+import com.kk.mall.api.biz.item.set.branch.BranchMiniLogoVo;
+import com.kk.mall.api.biz.item.set.theme.ItemSetThemeVo;
+import com.kk.mall.api.biz.item.spu.ItemSpu;
+import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -12,43 +14,41 @@ import java.util.stream.Collectors;
  * <p>
  * 产品列表值对象
  */
-@Getter
+@Data
 public class ItemListVo {
-    private long itemProductId;
+    private long itemId;
     /**
      * 主图url
      */
-    private String mainImageUrl;
+    private String itemMainPicUrl;
     /**
      * 产品名
      */
-    private String itemProductName;
+    private String itemName;
     /**
      * 品牌列表
      */
-    private List<BranchMiniLogoVo> branchVoList;
+    private List<BranchMiniLogoVo> itemBranchList;
 
 
-    public static List<ItemListVo> ofList(List<ItemProduct> itemProductList, List<BranchMiniLogoVo> branchMiniLogoVoList) {
-        return itemProductList.stream().map(itemProduct -> {
+    /**
+     * spu主题
+     */
+    private ItemSetThemeVo itemTheme;
+
+
+    public static List<ItemListVo> ofList(List<ItemSpu> itemSpuList, Map<Long, List<BranchMiniLogoVo>> spuBranchMap, Map<Long, ItemSetThemeVo> themeMap) {
+
+        return itemSpuList.stream().map(itemSpu -> {
             ItemListVo itemListVo = new ItemListVo();
-            itemListVo.itemProductId = itemProduct.getId();
-            itemListVo.mainImageUrl = itemProduct.getMainImageUrl();
-            itemListVo.itemProductName = itemProduct.getProductName();
-            itemListVo.branchVoList = branchMiniLogoVoList.stream()
-                    .filter(branchVo -> branchVo.getItemProductId().equals(itemProduct.getId())).collect(Collectors.toList());
+            List<BranchMiniLogoVo> branchSmallLogoRespList = spuBranchMap.get(itemSpu.getId());
+            itemListVo.setItemMainPicUrl(itemSpu.getSpuMainPicUrl());
+            itemListVo.setItemId(itemSpu.getId());
+            itemListVo.setItemName(itemSpu.getSpuName());
+            itemListVo.setItemBranchList(branchSmallLogoRespList);
+            itemListVo.setItemTheme(themeMap.get(itemSpu.getId()));
             return itemListVo;
         }).collect(Collectors.toList());
-    }
-
-    public static ItemListVo of(ItemProduct itemProduct, List<BranchMiniLogoVo> branchMiniLogoVoList) {
-        ItemListVo itemListVo = new ItemListVo();
-        itemListVo.itemProductId = itemProduct.getId();
-        itemListVo.mainImageUrl = itemProduct.getMainImageUrl();
-        itemListVo.itemProductName = itemProduct.getProductName();
-        itemListVo.branchVoList = branchMiniLogoVoList.stream()
-                .filter(branchVo -> branchVo.getItemProductId().equals(itemProduct.getId())).collect(Collectors.toList());
-        return itemListVo;
     }
 
 

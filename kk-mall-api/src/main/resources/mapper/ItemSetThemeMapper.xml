@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.item.set.theme.ItemSetThemeMapper">
+    <resultMap id="ItemSetThemeMap" type="com.kk.mall.api.biz.item.set.theme.ItemSetTheme">
+        <id column="id" property="id"/>
+        <result column="theme_name" property="themeName"/>
+        <result column="theme_image_url" property="themeImageUrl"/>
+        <result column="theme_description" property="themeDescription"/>
+        <result column="sort" property="sort"/>
+        <result column="valid" property="valid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+</mapper>

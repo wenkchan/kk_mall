@@ -22,7 +22,7 @@ public class CorsInterceptor implements HandlerInterceptor {
     private Environment env;
 
     private String[] allowDomain = {
-            "http://gw-beta.liangyizaixian.com",
+            "http://localhost:8081",
             "http://gw.liangyizaixian.com"
     };
 

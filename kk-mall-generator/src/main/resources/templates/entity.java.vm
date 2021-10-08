@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @author ${cfg.author}
+ * @author Wenk.Chan
  */
 
 #if(${entityLombokModel})

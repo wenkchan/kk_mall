@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.item.set.branch.ItemSetBranchMapper">
+    <resultMap id="ItemSetBranchMap" type="com.kk.mall.api.biz.item.set.branch.ItemSetBranch">
+        <id column="id" property="id"/>
+        <result column="branch_name" property="branchName"/>
+        <result column="branch_description" property="branchDescription"/>
+        <result column="branch_logo_mini_size_url" property="branchLogoMiniSizeUrl"/>
+        <result column="branch_logo_small_size_url" property="branchLogoSmallSizeUrl"/>
+        <result column="sort" property="sort"/>
+        <result column="valid" property="valid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+</mapper>

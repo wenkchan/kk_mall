@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mall.api.biz.item.spu.ItemSpuMapper">
+    <resultMap id="ItemSpuMap" type="com.kk.mall.api.biz.item.spu.ItemSpu">
+        <id column="id" property="id"/>
+        <result column="spu_name" property="spuName"/>
+        <result column="spu_en_name" property="spuEnName"/>
+        <result column="valid" property="valid"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="description" property="description"/>
+        <result column="spu_main_pic_url" property="spuMainPicUrl"/>
+    </resultMap>
+</mapper>
