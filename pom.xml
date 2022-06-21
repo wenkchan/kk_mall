@@ -30,7 +30,7 @@
         <lombok.version>1.18.10</lombok.version>
         <junit.version>4.13.1</junit.version>
         <mockito.version>1.10.19</mockito.version>
-        <mysql.version>8.0.19</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <commons-lang.version>3.7</commons-lang.version>
         <commons-codec.version>1.11</commons-codec.version>
         <commons-io.version>2.7</commons-io.version>
